@@ -5,9 +5,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.Set;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.lang.NonNull;
 import school.hei.patrimoine.modele.EvolutionPatrimoine;
 import school.hei.patrimoine.modele.FluxImpossibles;
 import school.hei.patrimoine.modele.Patrimoine;
+import school.hei.patrimoine.serialisation.Serialiseur;
+
+import java.util.Set;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "school.hei.patrimoine")
