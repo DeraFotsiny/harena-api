@@ -46,7 +46,7 @@ public class PatrimoineService {
 
     private void storePatrimoine(Patrimoine patrimoine) {
         String serializedObject = serialiseur.serialise(patrimoine);
-        String bucketKey = "objects/" + UUID.randomUUID().toString();
+        String bucketKey = "objects/" + patrimoine.nom();
         File tempFile = new File(System.getProperty("java.io.tmpdir"), bucketKey);
 
         try (FileWriter writer = new FileWriter(tempFile)) {
