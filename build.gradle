@@ -20,7 +20,20 @@ jacoco {
 
 
 repositories {
-
+maven {
+    url 'https://patrimoine-765641105081.d.codeartifact.eu-west-3.amazonaws.com/maven/patrimoine/'
+    credentials {
+        username = 'aws'
+        password = {
+            def output = new ByteArrayOutputStream()
+            exec {
+                commandLine 'bash', '-c', 'aws codeartifact get-authorization-token --domain patrimoine --domain-owner 765641105081  --region eu-west-3 --query authorizationToken --output text'
+                standardOutput = output
+            }
+            return output.toString().trim()
+        }()
+    }
+}
     mavenCentral()
 }
 
@@ -146,6 +159,6 @@ dependencies {
     testImplementation 'org.testcontainers:junit-jupiter:1.19.1'
     testImplementation 'org.junit-pioneer:junit-pioneer:2.2.0'
 
-
+    implementation 'school.hei:patrimoine:1.0'
 
 }
