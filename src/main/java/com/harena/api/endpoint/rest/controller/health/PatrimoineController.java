@@ -31,7 +31,9 @@ public class PatrimoineController {
 
     @PutMapping("/patrimoines")
     public ResponseEntity<Map<String, List<Patrimoine>>> crupdatePatrimoines(@RequestBody Map<String, List<Patrimoine>> newPatrimoines) {
-        patrimoineService.crupdatePatrimoines(newPatrimoines.get("data"));
+        newPatrimoines.get("data").forEach(patrimoine ->
+                patrimoineService.crupdatePatrimoine(patrimoine.nom(), patrimoine)
+        );
         Map<String, List<Patrimoine>> response = new HashMap<>();
         response.put("data", patrimoineService.getPatrimoines(0, Integer.MAX_VALUE));
         return ResponseEntity.ok(response);

@@ -38,10 +38,8 @@ public class PatrimoineService {
                 .orElse(null);
     }
 
-    public void crupdatePatrimoines(List<Patrimoine> newPatrimoines) {
-        for (Patrimoine patrimoine : newPatrimoines) {
-            storePatrimoine(patrimoine);
-        }
+    public void crupdatePatrimoine(String nom, Patrimoine patrimoine) {
+        storePatrimoine(patrimoine);
     }
 
     private void storePatrimoine(Patrimoine patrimoine) {
