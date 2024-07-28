@@ -10,6 +10,8 @@ import school.hei.patrimoine.modele.FluxImpossibles;
 import school.hei.patrimoine.modele.Patrimoine;
 import school.hei.patrimoine.serialisation.Serialiseur;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 @SpringBootApplication
@@ -29,11 +31,14 @@ public class ProjectionFutureService {
                                                        String debut,
                                                        String fin){
         // todo: prendre la fonction de Salohy getPatrimoineByNom pour prendre le patrimoine
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate dateDebut = LocalDate.parse(debut, formatter);
+        LocalDate dateFin = LocalDate.parse(fin, formatter);
         return new EvolutionPatrimoine(
                 nomPatrimoine,
                 patrimoine,
-                debut,
-                fin
+                dateDebut,
+                dateFin
         );
     }
 }
