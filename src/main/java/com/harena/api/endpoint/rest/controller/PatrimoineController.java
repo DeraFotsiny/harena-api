@@ -1,4 +1,4 @@
-package com.harena.api.endpoint.rest.controller.health;
+package com.harena.api.endpoint.rest.controller;
 
 import com.harena.api.service.PatrimoineService;
 import java.util.HashMap;
