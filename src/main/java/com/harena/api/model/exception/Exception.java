@@ -10,6 +10,7 @@ public class Exception extends RuntimeException {
 
   public enum ExceptionType {
     BadRequestException,
+    NotFoundException,
     NotAuthorizedException,
     ResourceNotFoundException,
     TooManyRequestsException,
