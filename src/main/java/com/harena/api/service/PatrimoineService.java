@@ -44,8 +44,8 @@ public class PatrimoineService {
         }
     }
 
-    private void storePatrimoine(Patrimoine object) {
-        String serializedObject = serialiseur.serialise(object);
+    private void storePatrimoine(Patrimoine patrimoine) {
+        String serializedObject = serialiseur.serialise(patrimoine);
         String bucketKey = "objects/" + UUID.randomUUID().toString();
         File tempFile = new File(System.getProperty("java.io.tmpdir"), bucketKey);
 
@@ -55,7 +55,7 @@ public class PatrimoineService {
             throw new RuntimeException("Failed to write object to temporary file", e);
         }
         bucketComponent.upload(tempFile, bucketKey);
-        dataStore.put(bucketKey, object);
+        dataStore.put(bucketKey, patrimoine);
     }
     private Patrimoine retrievePatrimoine(String bucketKey) {
         File downloadedFile = bucketComponent.download(bucketKey);
