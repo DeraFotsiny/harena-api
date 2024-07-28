@@ -18,17 +18,22 @@ public class ProjectionFutureService {
     private Serialiseur<PossessionAvecType> serialiseur;
     private BucketComponent bucketComponent;
 
-    public Set<FluxImpossibles> getPatrimoineFluxImmpossibles(@NonNull String nomPatrimoine,
-                                                              @NonNull String debut,
-                                                              @NonNull String fin){
+    public Set<FluxImpossibles> getPatrimoineFluxImmpossibles(String nomPatrimoine,
+                                                              String debut,
+                                                              String fin){
 
+        EvolutionPatrimoine evolutionPatrimoine = getEvolutionPatrimoine(nomPatrimoine, debut, fin);
+        return evolutionPatrimoine.getFluxImpossibles();
+    }
+    private EvolutionPatrimoine getEvolutionPatrimoine(String nomPatrimoine,
+                                                       String debut,
+                                                       String fin){
         // todo: prendre la fonction de Salohy getPatrimoineByNom pour prendre le patrimoine
-        EvolutionPatrimoine evolutionPatrimoine = new EvolutionPatrimoine(
+        return new EvolutionPatrimoine(
                 nomPatrimoine,
                 patrimoine,
                 debut,
                 fin
         );
-        return evolutionPatrimoine.getFluxImpossibles();
     }
 }
