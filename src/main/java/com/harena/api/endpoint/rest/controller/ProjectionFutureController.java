@@ -2,6 +2,7 @@ package com.harena.api.endpoint.rest.controller;
 
 import com.harena.api.service.ProjectionFutureService;
 import jakarta.ws.rs.QueryParam;
+import java.io.File;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,5 +24,14 @@ public class ProjectionFutureController {
     Set<FluxImpossibles> fluxImpossibles =
         projectionFutureService.getPatrimoineFluxImmpossibles(nomPatrimoine, debut, fin);
     return ResponseEntity.ok().body(fluxImpossibles).getBody();
+  }
+
+  @GetMapping("/patrimoines/{nom_patrimoine}/graphe")
+  public File getPatrimoineGraph(
+      @PathVariable("nom_patrimoine") String nomPatrimoine,
+      @QueryParam("debut") String debut,
+      @QueryParam("fin") String fin) {
+    File file = projectionFutureService.getPatrimoineGraph(nomPatrimoine, debut, fin);
+    return ResponseEntity.ok().body(file).getBody();
   }
 }
